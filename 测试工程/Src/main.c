@@ -96,7 +96,7 @@ uint8_t pBuf[12 * 1024];
 uint8_t aBuf[12 * 1024];
 
 
-void SPIFFS_Main(void)
+void MWL_Main(void)
 {
     BSP_QSPI_Init();
 
@@ -131,7 +131,7 @@ int main(void)
     SystemClock_Config();
     LL_AHB1_GRP1_EnableClock(LL_AHB1_GRP1_PERIPH_CRC);
 
-    xTaskCreate((TaskFunction_t)SPIFFS_Main, "SPIFFS", 128, NULL, 0, NULL);
+    xTaskCreate((TaskFunction_t)MWL_Main, "MWL_Main", 128, NULL, 0, NULL);
     vTaskStartScheduler();
     while (1)
     {
